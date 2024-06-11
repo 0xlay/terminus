@@ -1,0 +1,14 @@
+[package]
+name = "terminus"
+version = "0.1.0"
+authors = ["0xlay <0xlay.lab@gmail.com>"]
+edition = "2021"
+description = "The terminus is a cross-platform terminal emulator"
+repository = "https://github.com/0xlay/terminus"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+keywords = ["terminus", "terminal"]
+categories = ["terminal"]
+
+[dependencies]
+serde_json = "1.0.117"
