@@ -1,38 +1,27 @@
+mod app;
 mod app_config;
 
-use eframe::egui;
+fn main() -> eframe::Result<()> {
+    // TODO: add the terminus.json config file and load settings instead the default settings.
 
-#[derive(Default)]
-struct Terminus {}
-
-impl Terminus {
-    fn new(cc: &eframe::CreationContext<'_>) -> Self {
-        Self::default()
-    }
-}
-
-impl eframe::App for Terminus {
-    fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
-        egui::CentralPanel::default().show(ctx, |ui| {
-            ui.heading("Hello World!");
-        });
-    }
-}
-
-fn main() {
     let native_options = eframe::NativeOptions {
-        viewport: egui::ViewportBuilder::default()
+        viewport: eframe::egui::ViewportBuilder::default()
+            .with_title(app_config::APP_NAME)
             .with_inner_size(app_config::APP_DEFAULT_SIZE)
             .with_min_inner_size(app_config::APP_DEFAULT_MIN_SIZE)
-            .with_icon(
-                eframe::icon_data::from_png_bytes(app_config::APP_ICON)
-                    .unwrap(),
-            ),
+            .with_icon(eframe::icon_data::from_png_bytes(app_config::APP_ICON).unwrap())
+            .with_drag_and_drop(true),
+        follow_system_theme: false,
+        default_theme: eframe::Theme::Dark,
+        centered: true,
         ..Default::default()
     };
-    let _ = eframe::run_native(
+
+    eframe::run_native(
         app_config::APP_NAME,
         native_options,
-        Box::new(|cc| Box::new(Terminus::new(cc))),
-    );
+        Box::new(|cc| Box::new(app::Terminus::new(cc))),
+    )?;
+
+    Ok(())
 }
