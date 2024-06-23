@@ -1,7 +1,5 @@
 use egui::Vec2;
 
-// TODO: add terminus.json config for some fields.
-
 pub const APP_NAME: &str = "Terminus";
 
 pub const APP_ICON: &[u8] = include_bytes!("../assets/icons/terminus-256.png");
