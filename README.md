@@ -1,4 +1,4 @@
-# The terminus is a cross-platform terminal emulator.
+# The terminus is a terminal emulator.
 
 ![](.github/assets/rust-shell-header.png)
 
